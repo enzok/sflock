@@ -10,3 +10,4 @@
 .pytest_cache/
 SFlock.egg-info/
 build/
+dist/
