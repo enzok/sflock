@@ -33,7 +33,7 @@ magics = {
     "Rich Text Format": "doc",
     "Microsoft Office Word": "doc",
     "Microsoft Word": "doc",
-            
+    "Microsoft Disk Image": "vhd",
 }
 
 def xxe(f):
@@ -231,6 +231,13 @@ def identify(f):
         if f.mime in mimes:
             return mimes[f.mime]
         
+        for magic_types in magics:
+            if f.magic.startswith(magic_types):
+                return magics[magic_types]
+
+        if f.mime in mimes:
+            return mimes[f.mime]
+
         for magic_types in magics:
             if f.magic.startswith(magic_types):
                 return magics[magic_types]
